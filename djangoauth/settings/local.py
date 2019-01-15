@@ -12,13 +12,15 @@ DATABASES = {
     }
 }
 
-# INSTALLED_APPS += [
-#     'debug_toolbar',
-# ]
-#
-# MIDDLEWARE += [
-#     'debug_toolbar.middleware.DebugToolbarMiddleware',
-# ]
+INSTALLED_APPS += [
+    'debug_toolbar',
+]
+
+MIDDLEWARE += [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
 
 # Disable password strength when in development
 AUTH_PASSWORD_VALIDATORS = []
+
+INTERNAL_IPS = ['127.0.0.1']
