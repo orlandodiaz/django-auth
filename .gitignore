@@ -1,0 +1,11 @@
+db.sqlite3
+.idea/
+djangoauth/users/__pycache__/
+djangoauth/users/migrations/__pycache__/
+djangoauth/users/templatetags/__pycache__/
+djangoauth/media/markdownx/
+djangoauth/users/__pycache__/
+
+media/markdownx
+static/blog
+datadump.json

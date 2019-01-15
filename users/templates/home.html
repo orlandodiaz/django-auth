@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} Profile {% endblock %}
+
+{% block content %}
+
+    {% if not current_user.is_anonymous %}
+        <h2> Welcome {{ user.first_name }}</h2>
+    {% endif %}
+
+    <div class="jumbotron">
+        <h1 class="display-5">Welcome {{ current_user.full_name }}!</h1>
+        <p class="lead">This is a demo of an extended authentication platform for Django</p>
+        <img src="https://www.djangoproject.com/s/img/logos/django-logo-positive.svg" width="25%"">
+        <hr class="my-4">
+        <p> Frontend is Bootstrap with some Javascript
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </p>
+    </div>
+
+{% endblock %}

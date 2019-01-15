@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} Preferences {% endblock %}
+
+{% block content %}
+    <h2> Preferences </h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <p>
+                {{ field.label_tag }}<br>
+                {{ field }}
+{#                aa#}
+{#                {% render_field field class="form-control form-control-md w-90"  %}#}
+
+                {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                {% endfor %}
+            </p>
+        {% endfor %}
+
+        <button type="submit"> Submit </button>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "bootstrap.html" %}
+{% load static %}
+
+{#{% from "_render_field.html" import active %}#}
+
+{% block css %}
+    {#    <link rel="stylesheet" href={% static 'users/main.css' %}>#}
+    <link rel="stylesheet" type="text/css" href="{% static "users/main.css" %}">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+{% endblock css %}
+
+{% block navlinks %}
+    {#    <li class="nav-item">#}
+    {#        <a class="nav-link {{ home_state }}" href="{% url  'home' %}">Home <span class="sr-only">(current)</span></a>#}
+    {#    </li>#}
+
+    {% url 'home' as url %}
+    <li {% if request.path == url %} class="nav-item active" {% endif %} class="nav-item">
+        <a class="nav-link" href={{ url }}>Home</a>
+    </li>
+
+    {% if not user.is_authenticated %}
+
+
+        {% url 'login' as url %}
+        <li {% if request.path == url %} class="nav-item active" {% endif %} class="nav-item">
+            <a class="nav-link" href={{ url }}>Login</a>
+        </li>
+
+        {% url 'register' as url %}
+        <li {% if request.path == url %} class="nav-item active" {% endif %} class="nav-item">
+            <a class="nav-link" href={{ url }}>Register</a>
+        </li>
+
+
+        {#        <li class="nav-item {{ login_state }}">#}
+        {#            <a class="nav-link" href="{% url  'login' %}">Login</a>#}
+        {#        </li>#}
+        {#        <li class="nav-item {{ register_state }}">#}
+        {#            <a class="nav-link" href="{% url  'register' %}">Register</a>#}
+        {#        </li>#}
+    {% else %}
+
+
+        {% url 'preferences' as url %}
+        <li {% if request.path == url %} class="nav-item active" {% endif %} class="nav-item">
+            <a class="nav-link" href={{ url }}>Preferences</a>
+        </li>
+
+        {% url 'logout' as url %}
+        <li {% if request.path == url %} class="nav-item active" {% endif %} class="nav-item">
+            <a class="nav-link" href={{ url }}>Logout</a>
+        </li>
+    {% endif %}
+
+{% endblock %}
+
+
+
+{% block content %}
+    <p>Hi there</p>
+{% endblock %}

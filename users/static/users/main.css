@@ -1,0 +1,37 @@
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+/*.active {*/
+    /*color:red !important;*/
+/*}*/
+h2 {
+    margin-bottom:2rem;
+}
+
+.navbar{
+    margin-bottom:2rem;
+}
+/*.nav-item.nav-link.active {*/
+    /*color:red !important;*/
+/*}*/
+
+.navbar-nav>li.nav-item.active>a.nav-link{
+  text-decoration:none;
+  border-bottom:2px solid #3560ff;
+}
+.border-danger {
+    border-color:#ff929c !important;
+}
+.navbar-brand {
+    color:black;
+    /*font-family: 'Georgia', serif;*/
+    /*font-size:2.25rem;*/
+}
+.popover {
+    white-space: pre-wrap;
+}
+
+.w-90 {
+    width: 90%; !important;
+}
