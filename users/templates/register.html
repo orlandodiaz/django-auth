@@ -14,27 +14,21 @@
         {% csrf_token %}
 
         {% for field in form %}
-            {% if field.errors %}
+            {{ field.label_tag }} <br>
 
-                {{ field.label_tag }}
-                {% render_field field class="form-control form-control-md border border-danger w-90 d-inline" %}
+            {% if field.errors %}
+                {% render_field field class="form-control form-control-md border border-danger w-90 d-inline" spellcheck="false" autocorrect="off" %}
 
                 <button type="button" class="btn btn-md btn-danger" data-toggle="popover" title=""
                         data-content="{% for error in field.errors %} {{ error }}&#10;{% endfor %}">?
                 </button>
 
                 <p>
-
-                    {#                {% for error in field.errors %}#}
-                    {#                    <p style="color: red">{{ error }}</p>#}
-                    {#                {% endfor %}#}
-
-
-                    {% else %}
+            {% else %}
 
                 <p>
-                    {{ field.label_tag }}<br>
-                    {% render_field field class="form-control form-control-md w-90" %}</p>
+                    {#                    {{ field.label_tag }}<br>#}
+                    {% render_field field class="form-control form-control-md w-90" spellcheck="false" autocorrect="off" %}</p>
                 </p>
 
             {% endif %}
