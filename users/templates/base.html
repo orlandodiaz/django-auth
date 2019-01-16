@@ -27,8 +27,6 @@
 
 
         {% url 'login' as url %}
-            url: {{  url }}
-    request.path: {{ request.path }}
         <li {% if request.path == url %} class="nav-item active" {% endif %} class="nav-item">
             <a class="nav-link" href={{ url }}>Login</a>
         </li>
