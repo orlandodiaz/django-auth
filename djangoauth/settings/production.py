@@ -6,7 +6,7 @@ ALLOWED_HOSTS = [
     'djangoauth.herokuapp.com',
 ]
 
-DEBUG = False
+DEBUG = True
 
 STATIC_ROOT = "static/"
 
