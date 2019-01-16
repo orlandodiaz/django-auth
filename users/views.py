@@ -27,10 +27,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.views.generic.base import TemplateView  # new
 
-
 class IndexView(LoginRequiredMixin, TemplateView):
     template_name = 'home.html'
     redirect_field_name = 'login'
+
+
 
 class PreferencesView(LoginRequiredMixin, FormView):
     template_name = 'cbv_multiple_forms.html'
