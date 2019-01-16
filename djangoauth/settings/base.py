@@ -136,6 +136,7 @@ EMAIL_HOST = 'mail.privateemail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('DJANGO_MAIL_USERNAME')
 EMAIL_HOST_PASSWORD = os.environ.get('DJANGO_MAIL_PASSWORD')
+DEFAULT_FROM_EMAIL = os.environ.get('DJANGO_DEFAULT_SENDER')
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
