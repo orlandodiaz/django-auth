@@ -3,10 +3,7 @@
 {% block title %} Profile {% endblock %}
 
 {% block content %}
-
-    {{ this_should_throw_an_exception }}
-    {% throw exception please %}
-    Test
+    
     {% if not current_user.is_anonymous %}
         <h2> Welcome {{ user.first_name }}</h2>
     {% endif %}
