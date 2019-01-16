@@ -17,3 +17,8 @@ DATABASES['default'] = dj_database_url.config(
 MIDDLEWARE += [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+# Name and email tuple of admins who get notifications on server exceptions
+ADMINS = (
+  (os.environ.get('ADMIN_NAME'), os.environ.get('ADMIN_EMAIL'),
+))
