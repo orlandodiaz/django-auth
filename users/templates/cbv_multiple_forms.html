@@ -5,6 +5,20 @@
 {% block content %}
     <h4> Preferences </h4>
     <br>
+
+    {% if not user.profile.email_confirmed %}
+
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            Your email is not verified. Please click <a
+                href="{% url 'send-email-verification' %}">here</a> to
+            request a verification email
+        </div>
+
+    {% endif %}
+
+
     <form method="post" action="">
         {% csrf_token %}
         {% for field in preferences_form %}

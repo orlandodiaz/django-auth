@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 
-from users.views import RegisterView, LoginView, PreferencesView, activate, IndexView
+from users.views import RegisterView, LoginView, PreferencesView, activate, IndexView, SendEmailVerification
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('verify_email/', SendEmailVerification.as_view(), name='send-email-verification'),
     path('auth/', include('django.contrib.auth.urls')),
     path('login/', LoginView.as_view(), name='login'),
 

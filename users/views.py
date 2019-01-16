@@ -42,6 +42,7 @@ class PreferencesView(LoginRequiredMixin, FormView):
         # password_form = PasswordChangeForm(request.user, prefix="password")
 
         # return self.render_to_response(self.get_context_data({'preferences_form':preferences_form, 'password_form':password_form}))
+
         return render(self.request, template_name=self.template_name,
                       context={'preferences_form': preferences_form, 'password_form': password_form})
 
@@ -168,6 +169,23 @@ class RegisterView(SuccessMessageMixin, CreateView):
         return redirect('home')
 
 
+from django.views import View
+
+class SendEmailVerification(LoginRequiredMixin, View):
+    def get(self, request):
+        current_site = get_current_site(self.request)
+        subject = 'Verify your email'
+        message = render_to_string('email_activation.html', {
+            'user': self.request.user,
+            'domain': current_site.domain,
+            'uid': urlsafe_base64_encode(force_bytes(self.request.user.pk)).decode(),
+            'token': account_activation_token.make_token(self.request.user),
+        })
+        self.request.user.email_user(subject, message)
+        messages.info(request, "A verification email has been sent to the email address specified")
+        return redirect('preferences')
+
+
 from .tokens import account_activation_token
 from django.utils.encoding import force_text
 from django.utils.http import urlsafe_base64_decode
@@ -187,8 +205,8 @@ def activate(request, uidb64, token):
         user.profile.email_confirmed = True
         user.save()
         login(request, user)
-        messages.info(request, "verified")
+        messages.success(request, "Your email has been verified")
         return redirect('home')
     else:
-        messages.info(request, "not verified")
+        messages.warning(request, "Your email address could not be verified")
         return redirect('home')
