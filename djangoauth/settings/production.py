@@ -1,5 +1,6 @@
 from .base import *
 import dj_database_url
+
 # Add your domain to allowed hosts:
 
 ALLOWED_HOSTS = [
@@ -19,6 +20,5 @@ MIDDLEWARE += [
 ]
 
 # Name and email tuple of admins who get notifications on server exceptions
-ADMINS = (
-  (os.environ.get('ADMIN_NAME'), os.environ.get('ADMIN_EMAIL'),
-))
+
+ADMINS = [(os.environ.get('ADMIN_NAME'), os.environ.get('ADMIN_EMAIL')),]
